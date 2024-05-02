@@ -1,0 +1,37 @@
+@import url(../vendor/normalize.css);
+@import url(../blocks/page.css);
+@import url(../blocks/card.css);
+@import url(../blocks/content.css);
+@import url(../blocks/gallery.css);
+@import url(../blocks/header.css);
+@import url(../blocks/profile.css);
+@import url(../blocks/footer.css);
+
+.heart {
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    transform: rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+    content: normal;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+}
+
+.heart:before {
+    left: 10px;
+}
+
+.heart:after {
+    left: -10px;
+}
