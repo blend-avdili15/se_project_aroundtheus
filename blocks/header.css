@@ -1,16 +1,12 @@
 .header {
     width: 880px;
     height: 74px;
-    top: 45px;
-    left: 200px;
-    gap: 0px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(84, 84, 84, 1)
+    border-bottom: 1px solid rgba(84, 84, 84, 1);
+    padding: 45px 0 0;
 }
 
-.header__title {
-
+.header__logo {
+    width: 173px;
+    height: 33px;
 }

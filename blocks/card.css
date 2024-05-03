@@ -16,11 +16,7 @@
 .card__image {
     width: 282px;
     height: 282px;
-    top: 711px;
-    left: 499px;
-    gap: 0px;
-    border-radius: 10px 10px 0px 0px;
-    opacity: 10px;
+    flex: 0 0 282px;
 }
 
 .card__description {
@@ -52,8 +48,7 @@
 .card__like-button {
     width: 21px;
     height: 18px;
-    top: 1025px;
-    left: 740px;
-    gap: 0px;
-    opacity: 0px;
+    background: url(../images/heart-icon.svg) center no-repeat;
+    border: none;
+    cursor: pointer;
 }

@@ -1,3 +1,14 @@
 .footer {
-    color: white;
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer__copyright {
+    color: rgba(84, 84, 84, 1);
+    width: 318px;
+    height: 18px;
+    font-size: 18px;
+    font-weight: 400;
+    padding-bottom: 60px;
 }
