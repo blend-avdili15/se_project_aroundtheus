@@ -4,10 +4,9 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 282px;
-    height: 361px;
-    top: 711px;
-    left: 499px;
+    max-width: 282px;
+    width: 100%;
+    min-height: 361px;
     gap: 0px;
     opacity: 0px;
     background-color: white;
@@ -30,7 +29,6 @@
 
 .card__title {
     max-width: 220px;
-    height: 29px;
     font-family: "Inter", Arial, sans-serif;
     font-size: 24px;
     font-weight: 900;
@@ -39,8 +37,6 @@
     white-space: nowrap;
     overflow: hidden;
     margin: 0;
-    top: 1018px;
-    left: 519px;
     gap: 0px;
     opacity: 0px;
 }

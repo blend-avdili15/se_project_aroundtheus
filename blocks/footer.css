@@ -6,8 +6,7 @@
 
 .footer__copyright {
     color: rgba(84, 84, 84, 1);
-    width: 318px;
-    height: 18px;
+    max-width: 318px;
     font-size: 18px;
     font-weight: 400;
     padding-bottom: 60px;
