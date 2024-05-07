@@ -5,13 +5,10 @@
 
 .page__content {
     background-color: black;
-    max-width: 880px;
     width: 100%;
     min-height: 100vh;
     -webkit-font-smoothing: antiliased;
     -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    flex-direction: column;
 }
 
 .page__section {
