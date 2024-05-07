@@ -56,10 +56,12 @@
     border: 1px solid rgba(255, 255, 255, 1);
     margin-left: 18px;
     margin: 15px;
+    cursor: pointer;
+    transition: 1.5s ease-in;
 }
 
 .profile__edit-button:hover {
-    transition: 1.5s ease-in;
+    opacity: .5;
 }
 
 .profile__button {
@@ -70,10 +72,12 @@
     color: white;
     border-radius: 2px 0px 0px 0px;
     border-color: white;
+    cursor: pointer;
+    transition: 1s ease-in;
 }
 
 .profile__button:hover {
-    transition: 1s ease-in;
+    opacity: .5;
 }
 
 @media screen and (max-width:1280px) {
@@ -101,7 +105,6 @@
         justify-content: center;
         margin: 29px 0 33px 0;
         max-width: 320px;
-        gap: 14px;
     }
 
     .profile__title {

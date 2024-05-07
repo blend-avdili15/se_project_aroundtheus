@@ -47,8 +47,9 @@
     background: url(../images/heart-icon.svg) center no-repeat;
     border: none;
     cursor: pointer;
+    transition: 1s ease-in-out;
 }
 
 .card__like-button:hover {
-    transition: red 1s ease-in-out;
+    opacity: .5;
 }
