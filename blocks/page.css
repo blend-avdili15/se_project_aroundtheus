@@ -28,3 +28,16 @@
         max-width: calc(100% - 40px);
     }
 }
+
+@media screen and (max-width:320px) {
+    .page {
+        max-width: 320px;
+        width: 100%;
+    }
+
+    .page__content {
+        width: 282px;
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+}

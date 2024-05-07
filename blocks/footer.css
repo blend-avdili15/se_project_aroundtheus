@@ -11,3 +11,20 @@
     font-weight: 400;
     padding-bottom: 60px;
 }
+
+@media screen and (max-width:320px) {
+    .footer {
+        margin: 0;
+        padding-left: 19px;
+    }
+
+    .footer__copyright {
+        width: 282px;
+        height: 14px;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 14px;
+        padding-bottom: 36px;
+        margin-top: 12px;
+    }
+}
