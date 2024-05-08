@@ -6,6 +6,7 @@ This project is made so all the elements are displayed correctly on popular scre
 ## Project Link
 
 Github page link: https://blend-avdili15.github.io/se_project_aroundtheus/
+Github deployment: https://github.com/blend-avdili15/se_project_aroundtheus/deployments 
   
 ## Design Brief Figma  
   
