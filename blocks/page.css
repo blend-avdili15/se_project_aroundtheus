@@ -33,7 +33,8 @@
     }
 
     .page__content {
-        width: 282px;
+        max-width: 282px;
+        width: 100%;
         padding-left: 19px;
         padding-right: 19px;
     }

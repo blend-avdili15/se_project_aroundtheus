@@ -2,6 +2,10 @@
   
 This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the design brief on Figma.
 This project is made so all the elements are displayed correctly on popular screen sizes.
+
+## Project Link
+
+Github page link: https://blend-avdili15.github.io/se_project_aroundtheus/
   
 ## Design Brief Figma  
   

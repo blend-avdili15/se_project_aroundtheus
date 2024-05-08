@@ -7,15 +7,12 @@
     max-width: 282px;
     width: 100%;
     min-height: 361px;
-    gap: 0px;
-    opacity: 0px;
     background-color: white;
 }
 
 .card__image {
     width: 282px;
     height: 282px;
-    flex: 0 0 282px;
 }
 
 .card__description {
@@ -37,8 +34,6 @@
     white-space: nowrap;
     overflow: hidden;
     margin: 0;
-    gap: 0px;
-    opacity: 0px;
 }
 
 .card__like-button {
