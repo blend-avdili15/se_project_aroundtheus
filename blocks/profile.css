@@ -116,8 +116,7 @@
     }
 
     .profile__title-description {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         font-size: 14px;
         margin-left: 0;
         width: 100%;
