@@ -27,14 +27,51 @@ const initialCards = [
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const profileEditCloseButton = profileEditModal.querySelector(".modal_close");
+const profileTitle = document.querySelector("#profile-title");
+const profileDescription = document.querySelector("#profile-description");
+const profileTitleInput = document.querySelector("#profile-title-input");
+const modalCloseButton = document.querySelector("#modal-close-button");
+const profileDescriptionInput = document.querySelector("#profile-description-input");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+const cardListEl = document.querySelector(".cards__list");
+const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 
-profileEditButton.addEventListener("click", () => {
-    profileEditModal.classList.add("modal_opened");
+
+function closePopop() {
+    profileEditModal.classList.remove("modal__opened");
+}
+
+function getCardElement(cardData) {
+    const cardElement = cardTemplate.cloneNode(true);
+    const cardImageEl = cardElement.querySelector(".card__image");
+    const cardTitleEl = cardElement.querySelector(".card__title");
+    cardTitleEl.textContent = cardData.name;
+    return cardElement;
+}
+
+profileEditForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    profileTitle.textContent = profileTitleInput.value;
+    profileDescription.textContent = profileDescriptionInput.value;
+    closePopop();
 })
 
-const modalCloseButton = document.querySelector("#modal-close-button");
+profileEditButton.addEventListener("click", () => {
+    profileTitleInput.value = profileTitle.textContent;
+    profileDescriptionInput.value = profileDescription.textContent;
+    profileEditModal.classList.add("modal__opened");
+})
 
 
 modalCloseButton.addEventListener("click", () => {
-profileEditModal.classList.remove("modal_opened");
+closePopop();
 })
+
+
+initialCards.forEach((cardData) => {
+    const cardElement = getCardElement(cardData);
+    cardListEl.prependpend(cardElement);
+});
+
+// i know this isn't finished. I just wanted to see if I was on the right track. My cards aren't popping up at all and wanted to double check if I should restart 

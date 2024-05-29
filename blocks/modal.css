@@ -13,7 +13,7 @@
     padding: 0 19px;
 }
 
-.modal_opened {
+.modal__opened {
     display: flex;
 }
 
