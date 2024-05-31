@@ -27,15 +27,18 @@ const initialCards = [
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditCloseButton = profileEditModal.querySelector(".modal_close");
+const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-description");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const modalCloseButton = document.querySelector("#modal-close-button");
 const profileDescriptionInput = document.querySelector("#profile-description-input");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector(".cards__list");
+const cardListEl = document.querySelector(".gallery__cards");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
+
+
+/* --------------------------- Functions ------------------------------------------- */
 
 
 function closePopop() {
@@ -46,16 +49,23 @@ function getCardElement(cardData) {
     const cardElement = cardTemplate.cloneNode(true);
     const cardImageEl = cardElement.querySelector(".card__image");
     const cardTitleEl = cardElement.querySelector(".card__title");
+    cardImageEl.src = cardData.link;
+    cardImageEl.alt = cardData.name;
     cardTitleEl.textContent = cardData.name;
     return cardElement;
 }
 
-profileEditForm.addEventListener("submit", (e) => {
+/* --------------------------Event Handlers ------------------------------------ */
+
+
+function handleProfileEditSubmit(e) {
     e.preventDefault();
     profileTitle.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closePopop();
-})
+}
+
+ /* ------------------------- Event Listeners -------------------------------------- */
 
 profileEditButton.addEventListener("click", () => {
     profileTitleInput.value = profileTitle.textContent;
@@ -63,15 +73,12 @@ profileEditButton.addEventListener("click", () => {
     profileEditModal.classList.add("modal__opened");
 })
 
+modalCloseButton.addEventListener("click", closePopop);
 
-modalCloseButton.addEventListener("click", () => {
-closePopop();
-})
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 
 initialCards.forEach((cardData) => {
     const cardElement = getCardElement(cardData);
-    cardListEl.prependpend(cardElement);
+    cardListEl.prepend(cardElement);
 });
-
-// i know this isn't finished. I just wanted to see if I was on the right track. My cards aren't popping up at all and wanted to double check if I should restart 
