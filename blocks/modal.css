@@ -6,7 +6,6 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
     z-index: 999;
-    display: flex;
     justify-content: center;
     align-items: center;
     display: none;
@@ -25,7 +24,6 @@
     padding: 36px;
     border-radius: 10px;
     position: relative;
-    bottom: 90px;
 }
 
 .modal__close {
@@ -42,7 +40,7 @@
 }
 
 .modal__close:hover {
-    opacity: .7;
+    opacity: .6;
     cursor: pointer;
 }
 
@@ -66,7 +64,7 @@
 .modal__input {
     height: 27px;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
     font-size: 14px;
     font-weight: 400;
 }
@@ -84,11 +82,11 @@
 }
 
 .modal__button:hover {
-    opacity: .7;
+    opacity: .6;
     cursor: pointer;
 }
 
-@media screen and (max-width:630px) {
+@media screen and (max-width: 630px) {
     .modal__close {
     right: 0px;
     width: 26px;
@@ -96,14 +94,9 @@
     }
 }
 
-@media screen and (max-width:320px) {
-    .modal__form {
-        
-    }
-
-    .modal__close {
-    right: 0px;
-    width: 26px;
-    height: 26px;
+@media screen and (max-width: 320px) {
+    .modal__container {
+        bottom: 123px;
+        width: 282px;
     }
 }
