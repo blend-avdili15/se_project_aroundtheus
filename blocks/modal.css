@@ -92,22 +92,24 @@
     width: 26px;
     height: 26px;
     }
-}
-
-@media screen and (max-width: 320px) {
-    .modal__container {
-        width: 282px;
-        height: 322px;
-    }
 
     .modal__heading {
         font-size: 18px;
         line-height: 21.78px;
         margin-bottom: 75px;
     }
+}
+
+@media screen and (max-width: 320px) {
+    .modal__container {
+        width: 282px;
+        padding: 25px 19px;
+    }
 
     .modal__button {
         font-size: 14px;
         line-height: 17px;
+        margin: 15px 0 0;
+        padding: 0;
     }
 }
