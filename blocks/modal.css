@@ -87,6 +87,12 @@
 }
 
 @media screen and (max-width: 630px) {
+    .modal__container {
+        display: flex;
+        align-self: flex-start;
+        margin-top: 123px;
+    }
+    
     .modal__close {
     right: 0px;
     width: 26px;
