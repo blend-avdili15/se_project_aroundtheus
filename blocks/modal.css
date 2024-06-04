@@ -82,7 +82,7 @@
 }
 
 .modal__button:hover {
-    opacity: .6;
+    opacity: .8;
     cursor: pointer;
 }
 
@@ -96,7 +96,18 @@
 
 @media screen and (max-width: 320px) {
     .modal__container {
-        bottom: 123px;
         width: 282px;
+        height: 322px;
+    }
+
+    .modal__heading {
+        font-size: 18px;
+        line-height: 21.78px;
+        margin-bottom: 75px;
+    }
+
+    .modal__button {
+        font-size: 14px;
+        line-height: 17px;
     }
 }
