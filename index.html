@@ -26,7 +26,7 @@
                     <button class="profile__edit-button" id="profile-edit-button" type="button"></button>
                     <p class="profile__title-description" id="profile-description">Explorer</p>
                 </div>
-                <button class="profile__button" type="button"></button>
+                <button class="profile__button" id="add-card-button" type="button"></button>
             </section>
             <section class="gallery page__section">
                 <ul class="gallery__cards"></ul>
@@ -50,9 +50,22 @@
         </div>
     </div>
 
+    <div class="modal" id="add-card-modal">
+        <div class="modal__container">
+            <button class="modal__close" id="add-card-close-button" type="button"></button>
+            <h3 class="modal__heading">New Place</h3>
+            <form class="modal__form" name="add-card-form">
+                <input type="text" required class="modal__input modal__input_type_title" id="add-card-title-input" name="title" placeholder="Title">
+                <input type="text" required class="modal__input modal__input_type_url" id="add-card-url-input" name="url" placeholder="Image URL">
+                <button class="modal__button" type="submit">Save</button>
+            </form>            
+        </div>
+    </div>
+
     <template id="card-template">
         <li class="card">
             <img class="card__image" src="" alt=""/>
+            <img class="card__delete-button" src="" alt="">
             <div class="card__description">
                 <h2 class="card__title"></h2>
                 <button class="card__like-button" type="button"></button>

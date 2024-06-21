@@ -25,30 +25,63 @@ const initialCards = [
     }
 ];
 
-const profileEditButton = document.querySelector("#profile-edit-button");
+/* Wrappers */ 
+
+const cardListEl = document.querySelector(".gallery__cards");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
+const addNewCardModal = document.querySelector("#add-card-modal");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+const addNewCardForm = addNewCardModal.querySelector('.modal__form');
+
+
+/* Butttons & DOMs */
+
+const profileEditButton = document.querySelector("#profile-edit-button");
+const editProfileCloseButton = profileEditModal.querySelector(".modal__close");
+const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
+const addNewCardButton = document.querySelector("#add-card-button");
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-description");
+
+
+
+/* Form Data */ 
+
 const profileTitleInput = document.querySelector("#profile-title-input");
-const modalCloseButton = document.querySelector("#modal-close-button");
 const profileDescriptionInput = document.querySelector("#profile-description-input");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector(".gallery__cards");
+const cardTitleInput = addNewCardForm.querySelector("#add-card-title-input");
+const cardUrlInput = addNewCardForm.querySelector("#add-card-url-input");
+
+/* Templates */
+
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 
 
 /* --------------------------- Functions ------------------------------------------- */
 
+function openPopop(modal) {
+    modal.classList.add("modal_opened");
+}
 
-function closePopop() {
-    profileEditModal.classList.remove("modal_opened");
+function closePopop(modal) {
+    modal.classList.remove("modal_opened");
+}
+
+function renderCard(cardData) {
+    const cardElement = getCardElement(cardData);
+    cardListEl.prepend(cardElement);
 }
 
 function getCardElement(cardData) {
     const cardElement = cardTemplate.cloneNode(true);
     const cardImageEl = cardElement.querySelector(".card__image");
     const cardTitleEl = cardElement.querySelector(".card__title");
+    const likeButton = cardElement.querySelector(".card__like-button");
+
+    likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle(".card__like-button_active");
+    });
+
     cardImageEl.src = cardData.link;
     cardImageEl.alt = cardData.name;
     cardTitleEl.textContent = cardData.name;
@@ -62,23 +95,41 @@ function handleProfileEditSubmit(e) {
     e.preventDefault();
     profileTitle.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
-    closePopop();
+    closePopop(profileEditModal);
+}
+
+function handleAddCardFormSubmit(e) {
+    e.preventDefault();
+    const name = cardTitleInput.value;
+    const link = cardUrlInput.value;
+    renderCard({ name, link });
+    closePopop(addNewCardModal);
 }
 
  /* ------------------------- Event Listeners -------------------------------------- */
-/* can you show me the improvement here? */
+
 profileEditButton.addEventListener("click", () => {
     profileTitleInput.value = profileTitle.textContent;
     profileDescriptionInput.value = profileDescription.textContent;
-    profileEditModal.classList.add("modal_opened");
+    openPopop(profileEditModal);
 })
 
-modalCloseButton.addEventListener("click", closePopop);
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-
-initialCards.forEach((cardData) => {
-    const cardElement = getCardElement(cardData);
-    cardListEl.prepend(cardElement);
+editProfileCloseButton.addEventListener("click", (e) => {
+    closePopop(profileEditModal);
 });
+
+ /* form listeners */ 
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
+
+/* add new card modal (Event listener) */
+
+addNewCardButton.addEventListener("click", () => {
+    openPopop(addNewCardModal);
+});
+
+addNewCardCloseButton.addEventListener("click", () => {
+    closePopop(addNewCardModal);
+});
+
+initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
