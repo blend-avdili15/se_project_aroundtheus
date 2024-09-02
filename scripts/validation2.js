@@ -1,5 +1,5 @@
 const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
-    const error = document.querySelector('#${input.id}-error');
+    const error = document.querySelector(`#${input.id}-error`);
     error.textContent = input.validationMessage;
 
     error.classList.add(errorClass);
@@ -7,7 +7,7 @@ const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
 }
 
 const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
-    const error = document.querySelector('#${input.id}-error');
+    const error = document.querySelector(`#${input.id}-error`);
     error.textContent = '';
 
     error.classList.remove(errorClass);
@@ -31,7 +31,6 @@ const toggleButtonState = (inputs, button, settings) => {
         button.classList.add(settings.inactiveButtonClass);
     }
 }
-
 
 
 const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, ...settings }) => {

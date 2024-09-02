@@ -18,8 +18,9 @@ function hideInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
 function checkInputValidity(formEl, inputEl, options) {
     if(!inputEl.validity.valid) {
         showInputError(formEl, inputEl, options);
-    } 
+    } else {
         hideInputError(formEl, inputEl, options);
+    }
 }
 
 
@@ -39,7 +40,7 @@ function toggleButtonState(inputEls, submitButton, {inactiveButtonClass}) {
 
 
 function setEventListeners(formEl, options) {
-    const {inputSelector} = options;
+    const { inputSelector } = options;
     const inputEls = [...formEl.querySelectorAll(inputSelector)];
     const submitButton = formEl.querySelector('.modal__button')
 
@@ -54,22 +55,20 @@ function setEventListeners(formEl, options) {
 function enableValidation(options) {
     const formEls = [...document.querySelectorAll(options.formSelector)];
     formEls.forEach((formEl) => {
+        setEventListeners(formEl, options);
         formEl.addEventListener('submit', (e) => {
             e.preventDefault();
         });
     });
 }
 
-setEventListeners(formEl, options);
-
-
 const config = {
-        formSelector: ".popup__form",
-        inputSelector: ".popup__input",
-        submitButtonSelector: ".popup__button",
-        inactiveButtonClass: "popup__button_disabled",
-        inputErrorClass: "popup__input_type_error",
-        errorClass: "popup__error_visible"
+        formSelector: ".modal__form",
+        inputSelector: ".modal__input",
+        submitButtonSelector: ".modal__button",
+        inactiveButtonClass: "modal__button_disabled",
+        inputErrorClass: "modal__input_type_error",
+        errorClass: "modal__error_visible"
 };
 
 enableValidation(config);
