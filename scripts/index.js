@@ -64,10 +64,12 @@ const cardTemplate =
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 function renderCard(cardData) {
@@ -125,6 +127,15 @@ function handlePreviewPicture(cardData) {
   openPopup(previewImageModal);
 }
 
+function handleEscClose(e) {
+  if (e.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closePopup(openedModal);
+    }
+  }
+}
+
 /* ------------------------- Event Listeners -------------------------------------- */
 
 profileEditButton.addEventListener("click", () => {
@@ -157,11 +168,21 @@ previewCloseButton.addEventListener("click", () => {
   closePopup(previewImageModal);
 });
 
-/*closeButtons.forEach() => {
-    const popup = button.closest(".popup");
-    button.addEventListener("click", () => closePopup(popup));
-}
-Is this correct? Not sure here.     
-*/
+/* close buttons */
+const closeButtons = document.querySelectorAll(".modal__close");
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closePopup(popup));
+});
+
+/* Overlay click to close modal */
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closePopup(modal);
+    }
+  });
+});
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));

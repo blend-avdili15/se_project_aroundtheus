@@ -65,12 +65,17 @@
     font-weight: 400;
 }
 
+.modal__label {
+    position: relative;
+}
+
 .modal__input {
     height: 27px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     font-size: 14px;
     font-weight: 400;
+    width: 100%;
 }
             
 .modal__button {
@@ -94,6 +99,28 @@
     top: -294px;
     right: -386px;
     position: relative;
+}
+
+.modal__button_disabled {
+    background-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.modal__input_type_error {
+    border-bottom: 1px solid red;
+}
+
+.modal__error {
+    position: absolute;
+    top: 52px;
+    z-index: 5;
+}
+
+.modal__error_visible {
+    color: red;
+    font-size: 12px;
+    margin-top: -20px;
 }
 
 @media screen and (max-width: 630px) {  
