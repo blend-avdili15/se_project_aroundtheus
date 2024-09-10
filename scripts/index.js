@@ -45,7 +45,6 @@ const addNewCardButton = document.querySelector("#add-card-button");
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-description");
 const previewCloseButton = document.querySelector("#preview-close-button");
-/* const closeButtons = document.querySelectorAll(".popup__close"); Am I doing this correctly? */
 
 /* Form Data */
 
@@ -156,10 +155,6 @@ addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 addNewCardButton.addEventListener("click", () => {
   openPopup(addNewCardModal);
-});
-
-addNewCardCloseButton.addEventListener("click", () => {
-  closePopup(addNewCardModal);
 });
 
 /* preview image modal */
