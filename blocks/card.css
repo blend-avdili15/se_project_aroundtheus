@@ -69,21 +69,3 @@
 .card__like-button:hover {
     opacity: .5;
 }
-
-.card__preview-image {
-    width: 433px;
-    height: 540px;
-    position: fixed;
-}
-
-.card__preview-title {
-    width: 291px;
-    height: 12px;
-    position: relative;
-    color: white;
-    top: 285px;
-    left: -85px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14.52px;
-}

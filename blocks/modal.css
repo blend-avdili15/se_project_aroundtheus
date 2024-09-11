@@ -77,6 +77,12 @@
     font-weight: 400;
     width: 100%;
 }
+
+.modal__input:focus-visible {
+    border: none;
+    outline: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
             
 .modal__button {
     height: 50px;
@@ -121,6 +127,25 @@
     color: red;
     font-size: 12px;
     margin-top: -20px;
+    line-height: 13px;
+}
+
+.modal__image {
+    width: 433px;
+    height: 540px;
+    position: fixed;
+}
+
+.modal__preview_title {
+    width: 291px;
+    height: 12px;
+    position: relative;
+    color: white;
+    top: 285px;
+    left: -85px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
 }
 
 @media screen and (max-width: 630px) {  

@@ -79,7 +79,7 @@
             <button class="modal__close" id="add-card-close-button" type="button"></button>
             <h3 class="modal__heading">New Place</h3>
             <form class="modal__form" name="add-card-form">
-                <label for="" class="modal__label">
+                <label class="modal__label">
                     <input
                     type="text"
                     class="modal__input modal__input_type_title"
@@ -92,7 +92,7 @@
                     <span class="modal__error" id="add-card-title-input-error"></span>
                 </label>
 
-                <label for="" class="modal__label">
+                <label class="modal__label">
                     <input
                     type="url"
                     class="modal__input modal__input_type_url"
@@ -109,9 +109,9 @@
     </div>
 
     <div class="modal" id="preview-image-modal">
-        <img class="card__preview-image" id="card-preview-image" src="" alt="">
+        <img class="modal__image" id="card-preview-image" src="" alt="">
         <button class="modal__close modal__preview-close" id="preview-close-button" type="button"></button>
-        <p class="card__preview-title" id="preview-caption"></p>
+        <p class="modal__preview_title" id="preview-caption"></p>
     </div>
 
     <template id="card-template">

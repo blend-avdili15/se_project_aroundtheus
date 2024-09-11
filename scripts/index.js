@@ -157,12 +157,6 @@ addNewCardButton.addEventListener("click", () => {
   openPopup(addNewCardModal);
 });
 
-/* preview image modal */
-
-previewCloseButton.addEventListener("click", () => {
-  closePopup(previewImageModal);
-});
-
 /* close buttons */
 const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
