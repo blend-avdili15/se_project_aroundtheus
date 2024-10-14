@@ -3,6 +3,11 @@ function openPopup(modal) {
     document.addEventListener("keydown", handleEscClose);
   }
 
+  function closePopup(modal) {
+    modal.classList.remove("modal_opened");
+    document.removeEventListener("keydown", handleEscClose);
+  }
+
 function handleEscClose(e) {
     if (e.key === "Escape") {
       const openedModal = document.querySelector(".modal_opened");
@@ -52,6 +57,15 @@ export default class Card {
         openPopup(previewImageModal);
     }
 
+    /*_handleAddCardFormSubmit() {
+        e.preventDefault();
+        const name = cardTitleInput.value;
+        const link = cardUrlInput.value;
+        renderCard({ name, link });
+        closePopup(addNewCardModal);
+        e.target.reset();
+      }*/
+
     _getTemplate() {
         const cardTemplate = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
         return cardTemplate;
@@ -60,7 +74,9 @@ export default class Card {
     getView() {
         this._element = this._getTemplate();
 
-        this._element.querySelector(".card__image").style.backgroundImage = `url(${this._link})`;
+        const cardImage = this._element.querySelector(".card__image");
+        cardImage.src = this._link;
+        cardImage.alt = this._name;
         this._element.querySelector(".card__title").textContent = this._name;
 
         this._setEventListeners();

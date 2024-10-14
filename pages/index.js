@@ -3,28 +3,28 @@ import FormValidator from "../components/FormValidator.js"
 
 const initialCards = [
   {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    name: "Denver, Colorado",
+    link: "https://images.unsplash.com/photo-1616127055279-6e4f17b87a5d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRlbnZlciUyMGNvbG9yYWRvfGVufDB8fDB8fHww",
   },
   {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    name: "San Diego, California",
+    link: "https://images.unsplash.com/photo-1682453855731-19eb443a91c4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFjaWZpYyUyMGJlYWNoJTIwcGllcnxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    name: "Los Angeles, California",
+    link: "https://plus.unsplash.com/premium_photo-1697730143625-cc36da7bc150?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bG9zJTIwYW5nZWxlc3xlbnwwfHwwfHx8MA%3D%3D",
   },
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    name: "New York City, New York",
+    link: "https://images.unsplash.com/photo-1448317971280-6c74e016e49c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TmV3JTIwWW9yayUyMGNpdHl8ZW58MHx8MHx8fDA%3D",
   },
   {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    name: "London, England",
+    link: "https://plus.unsplash.com/premium_photo-1671734045770-4b9e1a5e53a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9uZG9ufGVufDB8fDB8fHww",
   },
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    name: "San Francisco, California",
+    link: "https://plus.unsplash.com/premium_photo-1673002094407-a72547fa791a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHNhbiUyMGZyYW5jaXNjb3xlbnwwfHwwfHx8MA%3D%3D",
   },
 ];
 
@@ -133,6 +133,8 @@ function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileEditModal);
+  addFormValidator._disableButton();
+  e.target.reset();
 }
 
 function handleAddCardFormSubmit(e) {
@@ -141,16 +143,9 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link });
   closePopup(addNewCardModal);
+  addFormValidator._disableButton();
   e.target.reset();
 }
-
-// remove the following
-/* function handlePreviewPicture(cardData) {
-  previewImage.src = cardData.link;
-  previewImage.alt = cardData.name;
-  previewImageCaption.textContent = cardData.name;
-  openPopup(previewImageModal);
-} */
 
 function handleEscClose(e) {
   if (e.key === "Escape") {

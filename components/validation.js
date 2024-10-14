@@ -71,4 +71,3 @@ const config = {
 };
 
 enableValidation(config);
-
