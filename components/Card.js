@@ -57,15 +57,6 @@ export default class Card {
         openPopup(previewImageModal);
     }
 
-    /*_handleAddCardFormSubmit() {
-        e.preventDefault();
-        const name = cardTitleInput.value;
-        const link = cardUrlInput.value;
-        renderCard({ name, link });
-        closePopup(addNewCardModal);
-        e.target.reset();
-      }*/
-
     _getTemplate() {
         const cardTemplate = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
         return cardTemplate;

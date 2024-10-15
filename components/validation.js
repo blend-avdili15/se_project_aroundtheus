@@ -1,5 +1,4 @@
-// enabling validation by calling enableValidation()
-// pass all the settings on call
+import FormValidator from "./FormValidator";
 
 function showInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
     const errorMessageEl = formEl.querySelector((`#${inputEl.id}-error`));
@@ -14,7 +13,6 @@ function hideInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
     errorMessageEl.textContent = '';
     errorMessageEl.classList.remove(errorClass);
 }
-
 
 function checkInputValidity(formEl, inputEl, options) {
     if(!inputEl.validity.valid) {
@@ -69,5 +67,11 @@ const config = {
         inputErrorClass: "modal__input_type_error",
         errorClass: "modal__error_visible"
 };
+
+const forms = Array.from(document.querySelectorAll(config.formSelector));
+forms.forEach((form) => {
+    const formValidator = new FormValidator(config, form);
+    formValidator.enableValidation();
+});
 
 enableValidation(config);
