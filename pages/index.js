@@ -1,5 +1,5 @@
 import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js"
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -28,18 +28,14 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  }
-
 /* Wrappers */
 
 const cardListEl = document.querySelector(".gallery__cards");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addNewCardModal = document.querySelector("#add-card-modal");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const addNewCardForm = addNewCardModal.querySelector(".modal__form");
+const addNewCardForm = document.querySelector("#card-form");
+const profileEditForm = document.querySelector("#profile-form");
+
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImage = document.querySelector("#card-preview-image");
 const previewImageCaption = document.querySelector("#preview-caption");
@@ -57,9 +53,11 @@ const previewCloseButton = document.querySelector("#preview-close-button");
 /* Form Data */
 
 const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector("#profile-description-input");
-const cardTitleInput = addNewCardForm.querySelector("#add-card-title-input");
-const cardUrlInput = addNewCardForm.querySelector("#add-card-url-input");
+const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+const cardTitleInput = document.querySelector("#add-card-title-input");
+const cardUrlInput = document.querySelector("#add-card-url-input");
 
 // validation
 const validationSettings = {
@@ -67,21 +65,21 @@ const validationSettings = {
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible"
+  errorClass: "modal__error_visible",
 };
 
+//  the bottom 2 here are stated as profileeditform and addcardform.
 const editFormElement = profileEditModal.querySelector(".modal__form");
 const addFormElement = addNewCardModal.querySelector(".modal__form");
 
 // formvalidator
 const addFormValidator = new FormValidator(validationSettings, addFormElement);
-const editFormValidator = new FormValidator(validationSettings, editFormElement);
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormElement
+);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
-/* Templates */
-
-// const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 
 /* --------------------------- Functions ------------------------------------------- */
 
@@ -95,36 +93,23 @@ function closePopup(modal) {
   document.removeEventListener("keydown", handleEscClose);
 }
 
-function renderCard(cardData) {
-  const cardSelector = '#card-template';
-  const card = new Card(cardData, cardSelector); 
-  cardListEl.prepend(card.getView()); 
+function createCard(item) {
+  const cardSelector = "#card-template";
+  const card = new Card(item, cardSelector, handleImageClick);
+  return card.getView();
 }
 
-/* function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
+function renderCard(cardData, method = "prepend") {
+  const cardElement = createCard(cardData);
+  cardListEl[method](cardElement);
+}
 
-  cardImageEl.addEventListener("click", () => {
-    handlePreviewPicture(cardData);
-  });
-
- deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
- likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-  return cardElement;
-} */
+function handleImageClick(cardData) {
+  previewImage.src = cardData.link;
+  previewImage.alt = cardData.name;
+  previewImageCaption.textContent = cardData.name;
+  openPopup(previewImageModal);
+}
 
 /* --------------------------Event Handlers ------------------------------------ */
 
@@ -133,7 +118,7 @@ function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileEditModal);
-  addFormValidator._disableButton();
+  editFormValidator.disableButton();
   e.target.reset();
 }
 
@@ -143,7 +128,7 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link });
   closePopup(addNewCardModal);
-  addFormValidator._disableButton();
+  addFormValidator.disableButton();
   e.target.reset();
 }
 
@@ -191,4 +176,4 @@ modals.forEach((modal) => {
   });
 });
 
-initialCards.forEach((cardData) => renderCard(cardData)); 
+initialCards.forEach((cardData) => renderCard(cardData));

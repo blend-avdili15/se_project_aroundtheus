@@ -42,7 +42,7 @@
         <div class="modal__container">
             <button class="modal__close" id="modal-close-button" type="button"></button>
             <h3 class="modal__heading">Edit Profile</h3>
-            <form class="modal__form" name="modal-form">
+            <form class="modal__form" name="modal-form" id="profile-form">
                 <label class="modal__label">
                     <input
                     type="text"
@@ -78,7 +78,7 @@
         <div class="modal__container">
             <button class="modal__close" id="add-card-close-button" type="button"></button>
             <h3 class="modal__heading">New Place</h3>
-            <form class="modal__form" name="add-card-form">
+            <form class="modal__form" name="add-card-form" id="card-form">
                 <label class="modal__label">
                     <input
                     type="text"
@@ -125,7 +125,7 @@
         </li>
     </template>
 
-    // <script type="module" src="./components/validation.js"></script> 
+    <script type="module" src="./components/FormValidator.js"></script> 
     <script src="./pages/index.js" type="module"></script>
 </body>
 </html>

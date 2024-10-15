@@ -1,5 +1,3 @@
-import FormValidator from "./FormValidator";
-
 function showInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
     const errorMessageEl = formEl.querySelector((`#${inputEl.id}-error`));
     inputEl.classList.add(inputErrorClass);
@@ -49,15 +47,15 @@ function setEventListeners(formEl, options) {
     });
 }
 
-function enableValidation(options) {
-    const formEls = [...document.querySelectorAll(options.formSelector)];
-    formEls.forEach((formEl) => {
-        setEventListeners(formEl, options);
-        formEl.addEventListener('submit', (e) => {
-            e.preventDefault();
-        });
+const enableValidation = (config) => {
+    const formList = Array.from(document.querySelectorAll(config.formSelector));
+    formList.forEach((formElement) => {
+      const validator = new FormValidator(config, formElement);
+      const formName = formElement.getAttribute('name');
+      formValidators[formName] = validator;
+      validator.enableValidation();
     });
-}
+  };
 
 const config = {
         formSelector: ".modal__form",
@@ -67,11 +65,5 @@ const config = {
         inputErrorClass: "modal__input_type_error",
         errorClass: "modal__error_visible"
 };
-
-const forms = Array.from(document.querySelectorAll(config.formSelector));
-forms.forEach((form) => {
-    const formValidator = new FormValidator(config, form);
-    formValidator.enableValidation();
-});
 
 enableValidation(config);

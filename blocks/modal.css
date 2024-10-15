@@ -150,7 +150,8 @@
 
 @media screen and (max-width: 630px) {  
     .modal__close {
-    right: 0px;
+    right: -378px;
+    top: -286px;
     width: 26px;
     height: 26px;
     }
@@ -173,5 +174,24 @@
         line-height: 17px;
         margin: 15px 0 0;
         padding: 0;
+    }
+
+    .modal__image{
+        width: 240px;
+        height: 299px;
+        top: 136px;
+        left: 40px;
+    }
+
+    .modal__close {
+        width: 30px;
+        height: 30px;
+        top: -290px;
+        left: 260.21px;
+    }
+
+    .modal__preview-title {
+        top: 34px;
+        left: -5px;
     }
 }

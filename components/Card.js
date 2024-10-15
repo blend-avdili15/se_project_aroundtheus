@@ -1,32 +1,16 @@
-function openPopup(modal) {
-    modal.classList.add("modal_opened");
-    document.addEventListener("keydown", handleEscClose);
-  }
-
-  function closePopup(modal) {
-    modal.classList.remove("modal_opened");
-    document.removeEventListener("keydown", handleEscClose);
-  }
-
-function handleEscClose(e) {
-    if (e.key === "Escape") {
-      const openedModal = document.querySelector(".modal_opened");
-      if (openedModal) {
-        closePopup(openedModal);
-      }
-    }
-  }
-
 export default class Card {
-    constructor(cardData, cardSelector) {
+    constructor(cardData, cardSelector, handleImageClick) {
+        this._cardData = cardData
         this._name = cardData.name;
         this._link = cardData.link;
         this._cardSelector = cardSelector;
+
+        this._handleImageclick = handleImageClick;
     }
 
     _setEventListeners() {
         this._element.querySelector('.card__image').addEventListener("click", () => {
-            this._handlePreviewPicture();
+            this._handleImageclick(this._cardData)
         });
         
         this._element.querySelector('.card__delete-button').addEventListener("click", () => {
@@ -44,17 +28,6 @@ export default class Card {
 
     _handleDeleteCard() {
         this._element.remove();
-    }
-
-    _handlePreviewPicture() {
-        const previewImage = document.querySelector("#card-preview-image"); 
-        const previewImageCaption = document.querySelector("#preview-caption"); 
-        const previewImageModal = document.querySelector("#preview-image-modal"); 
-
-        previewImage.src = this._link;
-        previewImage.alt = this._name;
-        previewImageCaption.textContent = this._name;
-        openPopup(previewImageModal);
     }
 
     _getTemplate() {
