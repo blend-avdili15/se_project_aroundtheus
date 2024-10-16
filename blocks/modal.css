@@ -165,7 +165,8 @@
 
 @media screen and (max-width: 320px) {
     .modal__container {
-        width: 282px;
+        width: 235px;
+        height: 299px;
         padding: 25px 19px;
     }
 
@@ -183,7 +184,17 @@
         left: 40px;
     }
 
-    .modal__close {
+    #add-card-close-button {
+        top: -25px;
+        right: -23px;
+    }
+
+    #modal-close-button {
+        top: -25px;
+        right: -23px;
+    }
+
+    .modal__preview-close {
         width: 30px;
         height: 30px;
         top: -290px;
