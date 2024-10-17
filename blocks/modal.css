@@ -168,6 +168,7 @@
         width: 235px;
         height: 299px;
         padding: 25px 19px;
+        top: -110px;
     }
 
     .modal__button {
@@ -185,13 +186,13 @@
     }
 
     #add-card-close-button {
-        top: -25px;
-        right: -23px;
+        top: -42px;
+        right: 4px;
     }
 
     #modal-close-button {
-        top: -25px;
-        right: -23px;
+        top: -42px;
+        right: 4px;
     }
 
     .modal__preview-close {
@@ -204,5 +205,11 @@
     .modal__preview-title {
         top: 34px;
         left: -5px;
+    }
+
+    .modal__heading {
+        font-size: 18px;
+        line-height: 21.78px;
+        margin-bottom: 75px;
     }
 }

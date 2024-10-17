@@ -68,15 +68,11 @@ const validationSettings = {
   errorClass: "modal__error_visible",
 };
 
-//  the bottom 2 here are stated as profileeditform and addcardform.
-const editFormElement = profileEditModal.querySelector(".modal__form");
-const addFormElement = addNewCardModal.querySelector(".modal__form");
-
 // formvalidator
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
 const editFormValidator = new FormValidator(
   validationSettings,
-  editFormElement
+  profileEditForm
 );
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
