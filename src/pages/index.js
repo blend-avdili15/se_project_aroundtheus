@@ -1,5 +1,28 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import '../pages/index.css';
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PupupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+
+// Create instances of the classes
+const CardSection = new Section({})
+
+
+// initialize all my instnaces 
+
+
+
+
+// all the rest
+
+
+
+
+
+
 
 const initialCards = [
   {
