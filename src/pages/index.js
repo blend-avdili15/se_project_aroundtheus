@@ -1,18 +1,23 @@
-import '../pages/index.css';
+import "../pages/index.css";
 
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
-import { initialCards, profileSelectors, validationSettings, DOMElements } from "../components/Constants.js";
+import {
+  initialCards,
+  profileSelectors,
+  validationSettings,
+  DOMElements,
+} from "../components/Constants.js";
 
-const { cardListEl, 
-  profileEditModal, 
-  addNewCardModal, 
+const {
+  cardListEl,
+  profileEditModal,
+  addNewCardModal,
   addNewCardForm,
   profileEditForm,
   previewImageModal,
@@ -26,32 +31,49 @@ const { cardListEl,
   cardTitleInput,
   cardUrlInput,
   previewCloseButton,
-  closeButtons
+  closeButtons,
 } = DOMElements;
-    
 
 // Create instances of the classes
-const section = new Section({ items: initialCards, renderer: createCard }, '.elements');
-const userInfo = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.profile__job' });
-const popupWithImage = new PopupWithImage('.popup_type_image');
-const popupWithForm = new PopupWithForm('.popup_type_edit', (formData) => {
-   userInfo.setUserInfo(formData);
-   popupWithForm.close();
+const section = new Section(
+  { items: initialCards, renderer: createCard },
+  ".elements"
+);
+const userInfo = new UserInfo({
+  nameSelector: "#profile-title-input",
+  jobSelector: "#profile-description-input",
+});
+const popupWithImage = new PopupWithImage({
+  PopupSelector: "#preview-image-modal",
+});
+const editProfilePopup = new PopupWithForm({
+  PopupSelector: "#profile-edit-modal",
+  handleFormSubmit: (formData) => {
+    userInfo.setUserInfo(formData);
+    editProfilePopup.close();
+  },
+});
+const addNewCardPopup = new PopupWithForm({
+  PopupSelector: "#add-card-modal",
+  handleFormSubmit: (formData) => {
+    userInfo.setUserInfo(formData);
+    addNewCardPopupPopup.close();
+  },
 });
 
-// initialize all my instnaces 
+// initialize all my instnaces
 section.renderItems();
 
 // event listeners
 popupWithImage.setEventListeners();
-popupWithForm.setEventListeners();
+editProfilePopup.setEventListeners();
+addNewCardPopup.setEventListeners();
 
 ////////////////////////////////
 
 // const editProfileCloseButton = profileEditModal.querySelector(".modal__close");
 // const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
-// const addNewCardButton = document.querySelector("#add-card-button");
-
+const addNewCardButton = document.querySelector("#add-card-button");
 
 // formvalidator
 const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
