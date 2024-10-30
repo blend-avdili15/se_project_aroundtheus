@@ -57,7 +57,7 @@ const cardTitleInput = document.querySelector("#add-card-title-input");
 const cardUrlInput = document.querySelector("#add-card-url-input");
 const previewCloseButton = document.querySelector("#preview-close-button");
 const closeButtons = document.querySelectorAll(".modal__close");
-// const addNewCardButton = document.querySelector("#add-card-button");
+const addNewCardButton = document.querySelector("#add-card-button");
 
 export const DOMElements = {
   cardListEl,
@@ -77,5 +77,5 @@ export const DOMElements = {
   cardUrlInput,
   previewCloseButton,
   closeButtons,
-  // addNewCardButton,
+  addNewCardButton,
 };

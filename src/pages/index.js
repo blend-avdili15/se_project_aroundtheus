@@ -32,7 +32,7 @@ const {
   cardUrlInput,
   previewCloseButton,
   closeButtons,
-  //addNewCardButton,
+  addNewCardButton,
 } = DOMElements;
 
 // Create instances of the classes
@@ -40,6 +40,7 @@ const section = new Section(
   { items: initialCards, renderer: createCard },
   ".gallery__cards"
 );
+
 const userInfo = new UserInfo({
   nameSelector: "#profile-title-input",
   jobSelector: "#profile-description-input",
@@ -50,10 +51,6 @@ const popupWithImage = new PopupWithImage({
 const editProfilePopup = new PopupWithForm({
   PopupSelector: "#profile-edit-modal",
   handleFormSubmit: handleProfileEditSubmit,
-  /* (formData) => {
-    userInfo.setUserInfo(formData);
-    editProfilePopup.close();
-  },*/
 });
 const addNewCardPopup = new PopupWithForm({
   PopupSelector: "#add-card-modal",
@@ -68,10 +65,6 @@ popupWithImage.setEventListeners();
 editProfilePopup.setEventListeners();
 addNewCardPopup.setEventListeners();
 
-//
-
-const addNewCardButton = document.querySelector("#add-card-button");
-
 // formvalidator
 const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
 const editFormValidator = new FormValidator(
@@ -83,20 +76,10 @@ addFormValidator.enableValidation();
 
 /* --------------------------- Functions ------------------------------------------- */
 
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscClose);
-}
-
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscClose);
-}
-
 function createCard(item) {
   const cardSelector = "#card-template";
   const card = new Card(item, cardSelector, handleImageClick);
-  return card.getView();
+  section.addItem(card.getView());
 }
 
 function renderCard(cardData, method = "prepend") {
@@ -108,7 +91,9 @@ function handleImageClick(cardData) {
   previewImage.src = cardData.link;
   previewImage.alt = cardData.name;
   previewImageCaption.textContent = cardData.name;
-  openPopup(previewImageModal);
+  //previewImageModal.open();
+  //openPopup(previewImageModal);
+  // popupWithImage.open();
 }
 
 /* --------------------------Event Handlers ------------------------------------ */
@@ -116,23 +101,14 @@ function handleImageClick(cardData) {
 function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
+  editProfilePopup.close();
 }
 
 function handleAddCardFormSubmit(inputValues) {
   renderCard({ name: inputValues.title, link: inputValues.url });
-  closePopup(addNewCardModal);
+  addNewCardPopup.close();
   addFormValidator.disableButton();
   addFormValidator.resetValidation();
-}
-
-function handleEscClose(e) {
-  if (e.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closePopup(openedModal);
-    }
-  }
 }
 
 /* ------------------------- Event Listeners -------------------------------------- */
@@ -141,34 +117,10 @@ profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
   profileTitleInput.value = profileTitle.textContent.trim();
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  openPopup(profileEditModal);
+  editProfilePopup.open();
 });
-
-/* form listeners */
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-// addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
-
-/* add new card modal (Event listener) */
 
 addNewCardButton.addEventListener("click", () => {
-  openPopup(addNewCardModal);
+  addFormValidator.resetValidation();
+  addNewCardPopup.open();
 });
-
-/* close buttons */
-
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(popup));
-});
-
-/* Overlay click to close modal */
-const modals = document.querySelectorAll(".modal");
-modals.forEach((modal) => {
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closePopup(modal);
-    }
-  });
-});
-
-initialCards.forEach((cardData) => renderCard(cardData));
