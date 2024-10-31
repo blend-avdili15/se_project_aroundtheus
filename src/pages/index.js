@@ -82,7 +82,7 @@ function createCard(item) {
   section.addItem(card.getView());
 }
 
-function renderCard(cardData, method = "prepend") {
+function renderCard(cardData /*, method = "prepend"*/) {
   const cardElement = createCard(cardData);
   section.addItem(cardElement);
 }
