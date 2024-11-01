@@ -5,12 +5,13 @@ export default class Card {
     this._link = cardData.link;
     this._cardSelector = cardSelector;
 
-    this._handleImageclick = handleImageClick;
+    this._handleImageClick = handleImageClick;
   }
 
   _setEventListeners() {
+    console.log(this._cardImage);
     this._cardImage.addEventListener("click", () => {
-      this._handleImageclick(this._cardData);
+      this._handleImageClick(this._cardData);
     });
 
     this._deleteButton.addEventListener("click", () => {

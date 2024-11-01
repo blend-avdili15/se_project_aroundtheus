@@ -59,3 +59,28 @@ modals.forEach((modal) => {
 }); */
 
 // initialCards.forEach((cardData) => renderCard(cardData));
+
+//   _setEventListeners() {
+//     this._cardImage.addEventListener("click", () => {
+//         this._handleImageClick(this._cardData);
+//       });
+//     };
+
+// this._cardImage.addEventListener("click", () =>
+//   this._handleImageClick({
+//     name: this._name,
+//     src: this._link,
+//   })
+
+// const createCard = (cardData) => {
+//   const card = new Card(
+//     {
+//       cardData,
+//       handleImageClick: () => {
+//         popupWithImage.open();
+//       },
+//     },
+//     cardSelector
+//   );
+//   section.addItem(card.getView());
+// };

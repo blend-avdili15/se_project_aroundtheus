@@ -82,18 +82,16 @@ function createCard(item) {
   section.addItem(card.getView());
 }
 
-function renderCard(cardData /*, method = "prepend"*/) {
-  const cardElement = createCard(cardData);
-  section.addItem(cardElement);
+function renderCard(cardData) {
+  console.log("this is our carddata =>", cardData);
+  createCard(cardData);
 }
 
 function handleImageClick(cardData) {
   previewImage.src = cardData.link;
   previewImage.alt = cardData.name;
   previewImageCaption.textContent = cardData.name;
-  //previewImageModal.open();
-  //openPopup(previewImageModal);
-  // popupWithImage.open();
+  popupWithImage.open(cardData);
 }
 
 /* --------------------------Event Handlers ------------------------------------ */
