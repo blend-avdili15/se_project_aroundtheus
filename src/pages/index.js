@@ -36,14 +36,14 @@ const {
   cardSelector,
 } = DOMElements;
 
-// const createCard = (item) => {
-//   const card = new Card({ item, cardSelector, handleImageClick });
-//   section.addItem(card.getView());
-// };
+const createCard = (item) => {
+  const card = new Card(item, cardSelector, handleImageClick);
+  section.addItem(card.getView());
+};
 
-// const renderCard = (cardData) => {
-//   createCard(cardData);
-// };
+const renderCard = (cardData) => {
+  createCard(cardData);
+};
 
 // Create instances of the classes
 const section = new Section(
@@ -85,16 +85,6 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 /* --------------------------- Functions ------------------------------------------- */
-
-function createCard(item) {
-  const cardSelector = "#card-template";
-  const card = new Card(item, cardSelector, handleImageClick);
-  section.addItem(card.getView());
-}
-
-function renderCard(cardData) {
-  createCard(cardData);
-}
 
 function handleImageClick(cardData) {
   previewImage.src = cardData.link;

@@ -94,3 +94,23 @@ modals.forEach((modal) => {
 // const renderCard = (cardData) => {
 //   createCard(cardData);
 // };
+
+// // function renderCard(cardData, method = "prepend") {
+//   const cardElement = createCard(cardData);
+//   cardListEl[method](cardElement);
+// }
+
+// const createCard = (item) => {
+//   const card = new Card(item, cardSelector, handleImageClick);
+//   return card.getView(); // Return the card element
+// };
+
+// function createCard(item) {
+//   const cardSelector = "#card-template";
+//   const card = new Card(item, cardSelector, handleImageClick);
+//   section.addItem(card.getView());
+// }
+
+// function renderCard(cardData) {
+//   createCard(cardData);
+// }
