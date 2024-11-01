@@ -33,7 +33,17 @@ const {
   previewCloseButton,
   closeButtons,
   addNewCardButton,
+  cardSelector,
 } = DOMElements;
+
+// const createCard = (item) => {
+//   const card = new Card({ item, cardSelector, handleImageClick });
+//   section.addItem(card.getView());
+// };
+
+// const renderCard = (cardData) => {
+//   createCard(cardData);
+// };
 
 // Create instances of the classes
 const section = new Section(
@@ -83,7 +93,6 @@ function createCard(item) {
 }
 
 function renderCard(cardData) {
-  console.log("this is our carddata =>", cardData);
   createCard(cardData);
 }
 

@@ -84,3 +84,13 @@ modals.forEach((modal) => {
 //   );
 //   section.addItem(card.getView());
 // };
+
+// const createCard = (item) => {
+//   const cardSelector = "#card-template";
+//   const card = new Card({ item, cardSelector, handleImageClick });
+//   section.addItem(card.getView());
+// };
+
+// const renderCard = (cardData) => {
+//   createCard(cardData);
+// };
