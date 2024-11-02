@@ -114,3 +114,53 @@ modals.forEach((modal) => {
 // function renderCard(cardData) {
 //   createCard(cardData);
 // }
+
+// this._element
+//   .querySelector(".card__like-button")
+//   .classList.toggle("card__like-button_active");
+
+//   this._element.querySelector(".card__like-button")
+//   .addEventListener("click", () => {
+//     this._handleLikeIcon();
+//   });
+
+/* const settings = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible"
+}; */
+
+// setInputValues(data) {
+//   this._inputList.forEach((input) => {
+//     // Here you insert the `value` by the `name` of the input
+//     input.value = data[input.name];
+//   });
+// }
+
+// this._popupForm.reset();
+
+// previewImage.src = cardData.link;
+// previewImage.alt = cardData.name;
+// previewImageCaption.textContent = cardData.name;
+// addFormValidator.resetValidation();
+// addFormValidator.resetValidation();
+
+// function handleProfileEditSubmit(e) {
+//   const inputData = editProfilePopup._getInputValues();
+//   userInfo.setUserInfo({
+//     name: inputData["#profile-title-input"],
+//     description: inputData["#profile-description-input"],
+//   });
+//   editProfilePopup.close();
+// }
+
+// const handleProfileEditSubmit = (inputData) => {
+//   userInfo.setUserInfo({
+//     name: inputData["#profile-title-input"],
+//     description: inputData["#profile-description-input"],
+//   });
+//   editProfilePopupForm.close();
+// };

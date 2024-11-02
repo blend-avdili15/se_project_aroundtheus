@@ -12,7 +12,7 @@ import {
   profileSelectors,
   validationSettings,
   DOMElements,
-} from "../components/Constants.js";
+} from "../utils/Constants.js";
 
 const {
   cardListEl,
@@ -56,14 +56,14 @@ const userInfo = new UserInfo({
   jobSelector: "#profile-description-input",
 });
 const popupWithImage = new PopupWithImage({
-  PopupSelector: "#preview-image-modal",
+  popupSelector: "#preview-image-modal",
 });
 const editProfilePopup = new PopupWithForm({
-  PopupSelector: "#profile-edit-modal",
+  popupSelector: "#profile-edit-modal",
   handleFormSubmit: handleProfileEditSubmit,
 });
 const addNewCardPopup = new PopupWithForm({
-  PopupSelector: "#add-card-modal",
+  popupSelector: "#add-card-modal",
   handleFormSubmit: handleAddCardFormSubmit,
 });
 
@@ -87,9 +87,6 @@ addFormValidator.enableValidation();
 /* --------------------------- Functions ------------------------------------------- */
 
 function handleImageClick(cardData) {
-  previewImage.src = cardData.link;
-  previewImage.alt = cardData.name;
-  previewImageCaption.textContent = cardData.name;
   popupWithImage.open(cardData);
 }
 
@@ -101,11 +98,27 @@ function handleProfileEditSubmit(e) {
   editProfilePopup.close();
 }
 
+// function handleProfileEditSubmit(e) {
+//   const inputData = editProfilePopup._getInputValues();
+//   userInfo.setUserInfo({
+//     name: inputData["#profile-title-input"],
+//     description: inputData["#profile-description-input"],
+//   });
+//   editProfilePopup.close();
+// }
+
+// const handleProfileEditSubmit = (inputData) => {
+//   userInfo.setUserInfo({
+//     name: inputData["#profile-title-input"],
+//     description: inputData["#profile-description-input"],
+//   });
+//   editProfilePopupForm.close();
+// };
+
 function handleAddCardFormSubmit(inputValues) {
   renderCard({ name: inputValues.title, link: inputValues.url });
   addNewCardPopup.close();
   addFormValidator.disableButton();
-  addFormValidator.resetValidation();
 }
 
 /* ------------------------- Event Listeners -------------------------------------- */
@@ -118,6 +131,5 @@ profileEditButton.addEventListener("click", () => {
 });
 
 addNewCardButton.addEventListener("click", () => {
-  addFormValidator.resetValidation();
   addNewCardPopup.open();
 });
