@@ -36,13 +36,14 @@ const {
   cardSelector,
 } = DOMElements;
 
-const createCard = (item) => {
+const generateCard = (item) => {
   const card = new Card(item, cardSelector, handleImageClick);
-  section.addItem(card.getView());
+  return card.getView();
 };
 
-const renderCard = (cardData) => {
-  createCard(cardData);
+const createCard = (item) => {
+  const card = generateCard(item);
+  section.addItem(card);
 };
 
 // Create instances of the classes
@@ -52,8 +53,8 @@ const section = new Section(
 );
 
 const userInfo = new UserInfo({
-  nameSelector: "#profile-title-input",
-  jobSelector: "#profile-description-input",
+  nameSelector: "#profile-title",
+  jobSelector: "#profile-description",
 });
 const popupWithImage = new PopupWithImage({
   popupSelector: "#preview-image-modal",
@@ -84,39 +85,19 @@ const editFormValidator = new FormValidator(
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-/* --------------------------- Functions ------------------------------------------- */
+/* --------------------------Event Handlers ------------------------------------ */
 
 function handleImageClick(cardData) {
   popupWithImage.open(cardData);
 }
 
-/* --------------------------Event Handlers ------------------------------------ */
-
-function handleProfileEditSubmit(e) {
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+function handleProfileEditSubmit(inputValues) {
+  userInfo.setUserInfo(inputValues);
   editProfilePopup.close();
 }
 
-// function handleProfileEditSubmit(e) {
-//   const inputData = editProfilePopup._getInputValues();
-//   userInfo.setUserInfo({
-//     name: inputData["#profile-title-input"],
-//     description: inputData["#profile-description-input"],
-//   });
-//   editProfilePopup.close();
-// }
-
-// const handleProfileEditSubmit = (inputData) => {
-//   userInfo.setUserInfo({
-//     name: inputData["#profile-title-input"],
-//     description: inputData["#profile-description-input"],
-//   });
-//   editProfilePopupForm.close();
-// };
-
 function handleAddCardFormSubmit(inputValues) {
-  renderCard({ name: inputValues.title, link: inputValues.url });
+  createCard({ name: inputValues.title, link: inputValues.url });
   addNewCardPopup.close();
   addFormValidator.disableButton();
 }
@@ -125,8 +106,10 @@ function handleAddCardFormSubmit(inputValues) {
 
 profileEditButton.addEventListener("click", () => {
   editFormValidator.resetValidation();
-  profileTitleInput.value = profileTitle.textContent.trim();
-  profileDescriptionInput.value = profileDescription.textContent.trim();
+  const info = userInfo.getUserInfo();
+  profileTitleInput.value = info.name.trim();
+  profileDescriptionInput.value = info.description.trim();
+
   editProfilePopup.open();
 });
 
