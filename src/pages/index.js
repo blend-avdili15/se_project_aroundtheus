@@ -44,6 +44,7 @@ const {
 
 const generateCard = (item) => {
   const card = new Card(item, cardSelector, handleImageClick);
+
   return card.getView();
 };
 
@@ -79,10 +80,10 @@ const profileImagePopup = new PopupWithForm({
   // handleFormSubmit: handleProfileImageSubmit,
 });
 
-// const deleteCardImagePopup = new PopupWithForm({
-//   popupSelector: "#delete-card-modal",
-//   // handleFormSubmit: handleDeleteCardImageSubmit,
-// });
+const deleteCardImagePopup = new PopupWithForm({
+  popupSelector: "#delete-card-modal",
+  // handleFormSubmit: handleDeleteCardImageSubmit,
+});
 
 // initialize all my instnaces
 section.renderItems();
@@ -105,6 +106,10 @@ addFormValidator.enableValidation();
 
 function handleImageClick(cardData) {
   popupWithImage.open(cardData);
+}
+
+function handleDeleteIconClick(card) {
+  deleteCardImagePopup.open();
 }
 
 function handleProfileEditSubmit(inputValues) {
@@ -137,6 +142,6 @@ profileImageButton.addEventListener("click", () => {
   profileImagePopup.open();
 });
 
-// cardDeleteButton.addEventListener("click", () => {
-//   deleteCardImagePopup.open();
-// });
+cardDeleteButton.addEventListener("click", () => {
+  deleteCardImagePopup.open();
+});
