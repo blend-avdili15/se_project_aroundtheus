@@ -34,6 +34,12 @@ const {
   closeButtons,
   addNewCardButton,
   cardSelector,
+  profileImageModal,
+  profileImageForm,
+  profileImageButton,
+  cardDeleteButton,
+  cardLikeButton,
+  deleteCardModal,
 } = DOMElements;
 
 const generateCard = (item) => {
@@ -67,6 +73,16 @@ const addNewCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: handleAddCardFormSubmit,
 });
+
+const profileImagePopup = new PopupWithForm({
+  popupSelector: "#profile-image-modal",
+  // handleFormSubmit: handleProfileImageSubmit,
+});
+
+// const deleteCardImagePopup = new PopupWithForm({
+//   popupSelector: "#delete-card-modal",
+//   // handleFormSubmit: handleDeleteCardImageSubmit,
+// });
 
 // initialize all my instnaces
 section.renderItems();
@@ -116,3 +132,11 @@ profileEditButton.addEventListener("click", () => {
 addNewCardButton.addEventListener("click", () => {
   addNewCardPopup.open();
 });
+
+profileImageButton.addEventListener("click", () => {
+  profileImagePopup.open();
+});
+
+// cardDeleteButton.addEventListener("click", () => {
+//   deleteCardImagePopup.open();
+// });

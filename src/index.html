@@ -24,6 +24,11 @@
             src="<%=require('./images/Avatar.jpg')%>"
             alt="Avatar"
           />
+          <button
+            class="profile__image-button"
+            id="profile-image-button"
+            type="button"
+          ></button>
           <div class="profile__info">
             <h2 class="profile__title" id="profile-title">Jacques Cousteau</h2>
             <button
@@ -152,10 +157,53 @@
       <p class="modal__preview-title" id="preview-caption"></p>
     </div>
 
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="delete-card-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Are you sure?</h3>
+        <button class="modal__button" type="submit">Yes</button>
+      </div>
+    </div>
+
+    <div class="modal" id="profile-image-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="profile-image-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Change profile picture</h3>
+        <form class="modal__form" name="modal-form" id="profile-image-form">
+          <label class="modal__label">
+            <input
+              type="text"
+              class="modal__input modal__input_type_url"
+              id="profile-image-url-input"
+              name="url"
+              placeholder="Link"
+              required
+            />
+          </label>
+
+          <button class="modal__button modal__button_disabled" type="submit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />
-        <button class="card__delete-button" type="button"></button>
+        <button
+          class="card__delete-button"
+          id="card-delete-button"
+          type="button"
+        ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>

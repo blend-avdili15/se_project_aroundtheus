@@ -42,6 +42,9 @@ const cardListEl = document.querySelector(".gallery__cards");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addNewCardForm = document.querySelector("#card-form");
+const profileImageModal = document.querySelector("#profile-image-modal");
+const profileImageForm = document.querySelector("#profile-image-form");
+const deleteCardModal = document.querySelector("#delete-card-modal");
 const profileEditForm = document.querySelector("#profile-form");
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImage = document.querySelector("#card-preview-image");
@@ -58,7 +61,9 @@ const cardUrlInput = document.querySelector("#add-card-url-input");
 const previewCloseButton = document.querySelector("#preview-close-button");
 const closeButtons = document.querySelectorAll(".modal__close");
 const addNewCardButton = document.querySelector("#add-card-button");
-// const cardSelector = document.getElementById("#card-template");
+const profileImageButton = document.querySelector("#profile-image-button");
+const cardDeleteButton = document.querySelector("card-delete-button");
+const cardLikeButton = document.querySelector(".card__like-button");
 const cardSelector = "#card-template";
 
 export const DOMElements = {
@@ -81,4 +86,10 @@ export const DOMElements = {
   closeButtons,
   addNewCardButton,
   cardSelector,
+  profileImageModal,
+  profileImageForm,
+  profileImageButton,
+  cardDeleteButton,
+  cardLikeButton,
+  deleteCardModal,
 };
