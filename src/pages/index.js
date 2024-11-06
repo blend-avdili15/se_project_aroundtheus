@@ -59,6 +59,14 @@ const section = new Section(
   ".gallery__cards"
 );
 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "95e8554b-872f-4ef7-8683-f3b3f4c5ec28",
+    "Content-Type": "application/json",
+  },
+});
+
 const userInfo = new UserInfo({
   nameSelector: "#profile-title",
   jobSelector: "#profile-description",
