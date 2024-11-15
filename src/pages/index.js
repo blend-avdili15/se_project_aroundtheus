@@ -49,7 +49,8 @@ const generateCard = (item) => {
     item,
     cardSelector,
     handleImageClick,
-    handleDeleteIconClick
+    handleDeleteIconClick,
+    handleLikeIconClick
   );
 
   return card.getView();
@@ -59,8 +60,6 @@ const createCard = (item) => {
   const card = generateCard(item);
   section.addItem(card);
 };
-
-// let section;
 
 // Create instances of the classes
 const section = new Section(
@@ -141,7 +140,7 @@ function handleDeleteIconClick(card) {
   deleteCardImagePopup.open();
 }
 
-function handleLikeIconClick(cardId, isLiked) {
+function handleLikeIconClick(cardId, isLiked, card) {
   api
     .changeLikeCardStatus(cardId, !isLiked)
     .then((updatedCard) => {
