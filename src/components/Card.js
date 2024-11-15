@@ -1,8 +1,10 @@
 export default class Card {
   constructor(cardData, cardSelector, handleImageClick, handleDeleteIconClick) {
+    console.log(cardData);
     this._cardData = cardData;
     this._name = cardData.name;
     this._link = cardData.link;
+    this.id = cardData._id;
     this._cardSelector = cardSelector;
 
     this._handleImageClick = handleImageClick;
@@ -13,10 +15,6 @@ export default class Card {
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick(this._cardData);
     });
-
-    // this._deleteButton.addEventListener("click", () => {
-    //   this._handleDeleteCard();
-    // });
 
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteIconClick(this);
@@ -31,7 +29,7 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
-  _handleDeleteCard() {
+  deleteCard() {
     this._element.remove();
   }
 

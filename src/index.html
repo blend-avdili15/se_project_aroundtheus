@@ -19,26 +19,20 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__image"
-            src="<%=require('./images/Avatar.jpg')%>"
-            alt="Avatar"
-          />
+          <img class="profile__image" id="avatar-image" alt="Avatar" />
           <button
             class="profile__image-button"
             id="profile-image-button"
             type="button"
           ></button>
           <div class="profile__info">
-            <h2 class="profile__title" id="profile-title">Jacques Cousteau</h2>
+            <h2 class="profile__title" id="profile-title"></h2>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__title-description" id="profile-description">
-              Explorer
-            </p>
+            <p class="profile__title-description" id="profile-description"></p>
           </div>
           <button
             class="profile__button"
@@ -158,15 +152,17 @@
     </div>
 
     <div class="modal" id="delete-card-modal">
-      <div class="modal__container">
-        <button
-          class="modal__close"
-          id="delete-card-close-button"
-          type="button"
-        ></button>
-        <h3 class="modal__heading">Are you sure?</h3>
-        <button class="modal__button" type="button">Yes</button>
-      </div>
+      <form class="modal__form" name="delete-card-form" id="delete-card-form">
+        <div class="modal__container">
+          <button
+            class="modal__close"
+            id="delete-card-close-button"
+            type="button"
+          ></button>
+          <h3 class="modal__heading">Are you sure?</h3>
+          <button class="modal__button" type="submit">Yes</button>
+        </div>
+      </form>
     </div>
 
     <div class="modal" id="profile-image-modal">
@@ -189,7 +185,10 @@
             />
           </label>
 
-          <button class="modal__button modal__button_disabled" type="submit">
+          <button
+            class="modal__button <!--modal__button_disabled-->"
+            type="submit"
+          >
             Save
           </button>
         </form>
@@ -206,7 +205,11 @@
         ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
+          <button
+            class="card__like-button"
+            id="card-like-button"
+            type="button"
+          ></button>
         </div>
       </li>
     </template>

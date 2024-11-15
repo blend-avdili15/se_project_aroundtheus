@@ -1,5 +1,5 @@
-class Api {
-  constructor({baseUrl, headers}) {
+export default class Api {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
@@ -10,49 +10,52 @@ class Api {
 
   getCardList() {
     return fetch(`${this._baseUrl}/cards`, {
-        headers: this._headers,
-    }).then(this._handleServerResponse)
+      headers: this._headers,
+    }).then(this._handleServerResponse);
+  }
+
+  createCard(cardData) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify(cardData),
+    }).then(this._handleServerResponse);
+  }
+
+  deleteCardStatus(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._handleServerResponse);
   }
 
   changeLikeCardStatus(cardId, like) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: like ? "PUT" : "DELETE",
-        headers: this._headers,
-    }).then(this._handleServerResponse)
+      method: like ? "PUT" : "DELETE",
+      headers: this._headers,
+    }).then(this._handleServerResponse);
   }
 
-  
-
-  getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-      headers: {
-        authorization: "95e8554b-872f-4ef7-8683-f3b3f4c5ec28",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: this._headers,
+    }).then(this._handleServerResponse);
   }
 
-  // other methods for working with the API
-  api.getInitialCards()
-   .then((result) => {
-     // process the result
-   })
-   .catch((err) => {
-     console.error(err); // log the error to the console
-   });
+  updateUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about }),
+    }).then(this._handleServerResponse);
+  }
+
+  updateUserAvatar(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatar }),
+    }).then(this._handleServerResponse);
+  }
 }
-
-GET https://around-api.en.tripleten-services.com/v1/users/me)
-{
-    "about": "Placeholder description",
- "avatar": "https://practicum-content.s3.amazonaws.com/resources/default-avatar_1704458546.png",
-  "name": "Placeholder name",
-  "_id": "e20537ed11237f86bbb20ccb"
-}
-
-
-});
