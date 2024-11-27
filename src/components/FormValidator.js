@@ -50,12 +50,11 @@ export default class FormValidator {
   }
 
   resetValidation() {
-    //emptying the inputs in the form
     this._form.reset();
-    //hiding the error messages
     this._inputEls.forEach((inputEl) => {
       this._hideInputError(inputEl);
     });
+    this.disableButton();
   }
 
   _setEventListeners() {

@@ -65,6 +65,7 @@ const profileImageButton = document.querySelector("#profile-image-button");
 const cardDeleteButton = document.querySelector("card-delete-button");
 const cardLikeButton = document.querySelector(".card__like-button");
 const cardSelector = "#card-template";
+// const submitButton = document.querySelector(".modal__buton")
 
 export const DOMElements = {
   cardListEl,

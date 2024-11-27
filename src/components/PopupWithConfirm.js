@@ -13,7 +13,7 @@ export default class PopupWithConfirm extends Popup {
       e.preventDefault();
       this._handleFormSubmit();
 
-      this.close();
+      // this.close();
     });
 
     super.setEventListeners();

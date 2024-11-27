@@ -115,8 +115,13 @@ const editFormValidator = new FormValidator(
   validationSettings,
   profileEditForm
 );
+const profileImageValidator = new FormValidator(
+  validationSettings,
+  profileImageForm
+);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+profileImageValidator.enableValidation();
 
 // section.renderItems();
 
@@ -134,7 +139,7 @@ function handleDeleteIconClick(card) {
         card.deleteCard();
         deleteCardImagePopup.close();
       })
-      .catch((err) => console.error(err));
+      .catch(console.error);
   });
 
   deleteCardImagePopup.open();
@@ -146,39 +151,54 @@ function handleLikeIconClick(cardId, isLiked, card) {
     .then((updatedCard) => {
       card.updateLikes(updatedCard.likes);
     })
-    .catch((err) => console.error(err));
+    .catch(console.error);
+}
+
+function setButtonText(form, text) {
+  const submitButton = form.querySelector(".modal__button");
+  submitButton.textContent = text;
 }
 
 function handleProfileEditSubmit(inputValues) {
+  setButtonText(profileEditForm, "Saving ...");
   api
     .updateUserInfo({ name: inputValues.name, about: inputValues.description })
     .then((info) => {
       console.log(info);
       userInfo.setUserInfo({ name: info.name, description: info.about });
       editProfilePopup.close();
+      profileEditForm.reset();
+      setButtonText(profileEditForm, "Save");
     })
-    .catch((err) => console.error(err));
+    .catch(console.error);
 }
 
 function handleAddCardFormSubmit(inputValues) {
+  setButtonText(addNewCardForm, "Saving ...");
   api
     .createCard({ name: inputValues.title, link: inputValues.url })
     .then((newCard) => {
       createCard(newCard);
       addNewCardPopup.close();
+      addNewCardForm.reset();
       addFormValidator.disableButton();
+      setButtonText(addNewCardForm, "Save");
     })
-    .catch((err) => console.error(err));
+    .catch(console.error);
 }
 
 function handleProfileImageSubmit(inputValues) {
+  setButtonText(profileImageForm, "Saving ...");
   api
     .updateUserAvatar(inputValues.url)
     .then((updatedUserInfo) => {
       userInfo.setUserAvatar(updatedUserInfo.avatar);
       profileImagePopup.close();
+      profileImageForm.reset();
+      profileImageValidator.disableButton();
+      setButtonText(profileImageForm, "Save");
     })
-    .catch((err) => console.error(err));
+    .catch(console.error);
 }
 
 /* ------------------------- Event Listeners -------------------------------------- */
@@ -207,9 +227,7 @@ api
     section.setRendererItems(cards);
     section.renderItems();
   })
-  .catch((err) => {
-    console.error(err);
-  });
+  .catch(console.error);
 
 api
   .getUserInfo()
@@ -220,4 +238,4 @@ api
     });
     userInfo.setUserAvatar(userData.avatar);
   })
-  .catch((err) => console.error(err));
+  .catch(console.error);
