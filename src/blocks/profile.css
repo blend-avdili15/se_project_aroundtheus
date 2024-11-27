@@ -25,7 +25,14 @@
   background: url(../images/edit.svg) center no-repeat;
   border: 1px solid rgba(255, 255, 255, 1);
   cursor: pointer;
-  transition: 1.5s ease-in;
+  /* transition: 1.5s ease-in; */
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.profile__image:hover + .profile__image-button,
+.profile__image-button:hover {
+  opacity: 1;
 }
 
 .profile__info {

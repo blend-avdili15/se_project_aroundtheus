@@ -168,9 +168,11 @@ function handleProfileEditSubmit(inputValues) {
       userInfo.setUserInfo({ name: info.name, description: info.about });
       editProfilePopup.close();
       profileEditForm.reset();
-      setButtonText(profileEditForm, "Save");
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(profileEditForm, "Save");
+    });
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -182,9 +184,11 @@ function handleAddCardFormSubmit(inputValues) {
       addNewCardPopup.close();
       addNewCardForm.reset();
       addFormValidator.disableButton();
-      setButtonText(addNewCardForm, "Save");
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(addNewCardForm, "Save");
+    });
 }
 
 function handleProfileImageSubmit(inputValues) {
@@ -196,9 +200,11 @@ function handleProfileImageSubmit(inputValues) {
       profileImagePopup.close();
       profileImageForm.reset();
       profileImageValidator.disableButton();
-      setButtonText(profileImageForm, "Save");
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(profileImageForm, "Save");
+    });
 }
 
 /* ------------------------- Event Listeners -------------------------------------- */
@@ -217,6 +223,7 @@ addNewCardButton.addEventListener("click", () => {
 });
 
 profileImageButton.addEventListener("click", () => {
+  profileImageValidator.resetValidation();
   profileImagePopup.open();
 });
 
